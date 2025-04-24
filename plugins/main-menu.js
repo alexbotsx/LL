@@ -12,21 +12,20 @@ let tags = {
   'sticker': 'Stickers 🏞',
   'img': 'Imágenes 📸',
   'logo': 'Logo - maker 🎨',
-  'nable': 'On / Off 📴', 
+  'nable': 'On / Off 📴',
   'downloader': 'Descargas 📥',
   'tools': 'Herramientas 🔧',
-  'search': 'Busquedas 🔎', 
+  'search': 'Busquedas 🔎',
   'rpg': 'RPG 🌠',
   'rg': 'Registro 📁',
-  'owner': 'Creador 😺', 
-  'audio': 'Audios 🔉', 
+  'owner': 'Creador 😺',
+  'audio': 'Audios 🔉',
   'anime': 'Anime 👑',
-  'advanced': 'Avanzado 💠',
 }
 
 const defaultMenu = {
   before: `
-“ Hola *%name*, Te Presento el Menu de GHOST BOT”
+“ Hola *%name*, Te Presento el Menu de GHOSTBOT”
 
 ⬣「 *Info User* 」⬣
 *👤 Nombre ∙* %name
@@ -35,14 +34,13 @@ const defaultMenu = {
 *⭐ Nivel ∙* %level
 
 %readmore
-◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-\t\t\t*GHOST BOT  -  M E N Ú S*
+\t\t\t*GHOSTBOT  -  M E N U*
 `.trimStart(),
-header: '╭──⚔️「 *%category* 」⚡',
-body: '│  👑◦ *%cmd*\n',
-footer: '╰──📍\n',
-after: '',
+  header: '╭━〔 *%category* 〕━╮',
+  body: '│  ➔⭐◦ *%cmd*\n',
+  after: '',
 }
 
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
@@ -142,9 +140,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    
-    let pp = './src/img/siskedurl.jpg'
-    await conn.sendFile(m.chat, pp, 'thumbnail.jpg', text.trim(), m, null, rcanal)
+
+    let pp = './src/img/GHOSTBOT.jpg'
+    await conn.sendFile(m.chat, pp, 'thumbnail.jpg', text.trim(), m, null)
 
   } catch (e) {
     conn.reply(m.chat, 'Lo sentimos, el menú tiene un error.', m)
@@ -154,7 +152,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['menu', 'help', 'menú', 'comandos', 'allmenu', 'menucompleto', 'funciones']  
+handler.command = ['menu', 'help', 'menú', 'comandos', 'allmenu', 'menucompleto', 'funciones']
 export default handler
 
 const more = String.fromCharCode(8206)
@@ -165,5 +163,4 @@ function clockString(ms) {
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-
 }
