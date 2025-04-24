@@ -60,7 +60,7 @@ global.textbot = '𝘞𝘩𝘢𝘵𝘴𝘈𝘱𝘱 GHOSTBOT'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.catalogo = fs.readFileSync('./src/img/catalogo.jpg')
-global.ghostbot.jpg = fs.readFileSync('./src/img/GHOSTBOT.jpg')
+global.GHOSTBOT = fs.readFileSync('./src/img/GHOSTBOT.jpg')
 global.avatar = fs.readFileSync('./src/img/avatar_contact.png')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
