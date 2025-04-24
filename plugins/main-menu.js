@@ -37,7 +37,7 @@ const defaultMenu = {
 %readmore
 ◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡◠◡
 
-\t\t\t*Z E R W A Y  -  M E N Ú S*
+\t\t\t*GHOST BOT  -  M E N Ú S*
 `.trimStart(),
 header: '╭──⚔️「 *%category* 」⚡',
 body: '│  👑◦ *%cmd*\n',
