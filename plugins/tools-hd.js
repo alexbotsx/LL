@@ -31,7 +31,7 @@ let handler = async (m, { conn, command }) => {
 }
 
 handler.help = ['hd', 'remini']
-handler.tags = ['tools']
+handler.tags = ['upscaler']
 handler.command = /^(hd|remini)$/i
 
 export default handler
