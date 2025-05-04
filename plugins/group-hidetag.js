@@ -1,23 +1,85 @@
-//Código desarollado por Semi, https://wa.me/51993047526)
-let handler = async (m, { conn, text, participants }) => {
-  const mime = m.mtype
-  const type = /imageMessage|videoMessage|conversation|extendedTextMessage/.test(mime)
-  if (!m.quoted && type) {
-    if ((mime === 'imageMessage')) {
-      conn.sendMessage(m.chat, { image: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), caption: text ? text : "", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m });
-    } else if ((mime === 'videoMessage')) {
-      conn.sendMessage(m.chat, { video: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), mimetype: 'video/mp4', caption: text ? text : "" }, { quoted: m })
-    } else if ((mime === ("conversation") || ("extendedTextMessage"))) {
-      conn.sendMessage(m.chat, { text: text ? text : "@alexnsnk7", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
-    }
-  } else if (m.quoted) {
-    await conn.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
-  }
-}
-handler.help = ['notify', 'hidetag']
-handler.tags = ['adm']
-handler.command = ['hidetag', 'notify', 'n', 'noti', 'notificar', 'notif', 'aviso', 'avisar',]
-handler.group = true
-handler.admin = true
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import * as fs from 'fs';
 
-export default handler
+const handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
+  try {
+    const users = participants.map((u) => conn.decodeJid(u.id));
+    const watermark = '\n\n> GHOST - BOT';
+
+    const q = m.quoted ? m.quoted : m || m.text || m.sender;
+    const c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender;
+
+    const repliedText = m.quoted && m.quoted.text ? m.quoted.text.trim() : '';
+    let messageText = (repliedText ? `${repliedText}\n` : '') + (text || '');
+
+    if (!m.quoted && !m.isMedia && !messageText.includes(watermark)) {
+      messageText += watermark;
+    }
+
+    const msg = conn.cMod(
+      m.chat,
+      generateWAMessageFromContent(
+        m.chat,
+        { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c } },
+        { quoted: m, userJid: conn.user.id }
+      ),
+      messageText,
+      conn.user.jid,
+      { mentions: users }
+    );
+
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+  } catch {
+    const users = participants.map((u) => conn.decodeJid(u.id));
+    const quoted = m.quoted ? m.quoted : m;
+    const mime = (quoted.msg || quoted).mimetype || '';
+    const isMedia = /image|video|sticker|audio/.test(mime);
+    const watermark = '\n\n> GHOST - BOT';
+
+    if (isMedia) {
+      const mediax = await quoted.download?.();
+      const options = { mentions: users, quoted: m };
+
+      if (quoted.mtype === 'imageMessage') {
+        conn.sendMessage(m.chat, { image: mediax, caption: (text || '') + watermark, ...options });
+      } else if (quoted.mtype === 'videoMessage') {
+        conn.sendMessage(m.chat, { video: mediax, caption: text || '', mimetype: 'video/mp4', ...options });
+      }
+    } else {
+      if (quoted.mtype === 'audioMessage') {
+        conn.sendMessage(m.chat, { audio: quoted.download ? await quoted.download() : null, caption: '', mimetype: 'audio/mpeg', fileName: `Hidetag.mp3`, ...options });
+      } else if (quoted.mtype === 'stickerMessage') {
+        conn.sendMessage(m.chat, { sticker: quoted.download ? await quoted.download() : null, ...options });
+      } else {
+        const more = String.fromCharCode(8206);
+        const masss = more.repeat(850) + watermark;
+
+        await conn.relayMessage(
+          m.chat,
+          {
+            extendedTextMessage: {
+              text: `${masss}`,
+              contextInfo: {
+                mentionedJid: users,
+                externalAdReply: {
+                  thumbnail: icons,
+                  sourceUrl: channel
+                }
+              }
+            }
+          },
+          {}
+        );
+      }
+    }
+  }
+};
+
+handler.help = ['hidetag'];
+handler.tags = ['group'];
+handler.command = /^(hidetag|notify|notificar|noti|n|hidetah|hidet)$/i;
+
+handler.group = true;
+handler.admin = true;
+
+export default handler;

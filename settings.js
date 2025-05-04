@@ -11,14 +11,15 @@ import moment from 'moment-timezone'
 
 //Si quiere evitar escribir el número que será bot en la consola, agregué desde aquí entonces:
 //Sólo aplica para opción 2 (ser bot con código de texto de 8 digitos)
-global.botNumberCode = '' //Ejemplo: +573218138672
+global.botNumberCode = '' //Ejemplo: 51993047526
 global.confirmCode = ''
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.owner = [
-   ['51993047526', 'Alexn', true],
-   ['51993047526', 'alexn', true],
+   ['51993047526', 'xd', true],
+   ['51993047526', 'xd', true],
+   ['51993047526', 'xd', true],
    ['51993047526'],
 ]
 
@@ -43,8 +44,8 @@ global.libreria = 'Baileys'
 global.baileys = '@whiskeysockets/baileys'
 global.vs = '2.0.7'
 global.languaje = 'Español'
-global.nameqr = 'Ghost Bot'
-global.namebot = 'GHOST BOT'
+global.nameqr = 'GHOSTBOT'
+global.namebot = 'GHOSTBOT'
 global.sessions = 'GHOSTBOTSession'
 global.jadi = 'GHOSTBOTJadiBot'
 
@@ -53,7 +54,7 @@ global.jadi = 'GHOSTBOTJadiBot'
 global.packname = 'GHOSTBOT'
 global.botname = 'GHOSTBOT'
 global.wm = '𝘞𝘩𝘢𝘵𝘴𝘈𝘱𝘱 𝘉𝘰𝘵'
-global.author = '𝙕𝙚𝙧𝙬𝙖𝙮'
+global.author = 'GHOSTBOT'
 global.dev = '𝙉𝙤𝙩 𝙈𝙮 𝙋𝙧𝙤𝙡𝙚𝙢𝙖'
 global.textbot = '𝘞𝘩𝘢𝘵𝘴𝘈𝘱𝘱 GHOSTBOT'
 
@@ -66,9 +67,9 @@ global.avatar = fs.readFileSync('./src/img/avatar_contact.png')
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.grupo = 'https://chat.whatsapp.com/LbdiPrImAbI67gaA5Dyf3j'
-global.channel = 'https://whatsapp.com/channel/0029Vb47YlCLdQemgIavq555'
-global.channel2 = 'https://whatsapp.com/channel/0029Vb47YlCLdQemgIavq555'
-global.md = 'https://wa.me/qr/DQWLDASD555ADS' 
+global.channel = 'https://whatsapp.com/channel/0029Vb47YlCLdQemgIav88844'
+global.channel2 = 'https://whatsapp.com/channel/0029Vb47YlCLdQemgIav88844'
+global.md = 'https://wa.me/51993047526' 
 global.ig = 'https://www.instagram.com/alexnsnk7'
 global.tiktok = 'https://www.tiktok.com/@savagehax'
 
